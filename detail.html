@@ -1,0 +1,70 @@
+<div>
+<form class="form-horizontal">
+<fieldset>
+<h3>Details</h3>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Recipient:</label>  
+  <div class="col-md-4">{{currentmesser.recipient}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Recipient_img:</label>  
+  <div class="col-md-4"><img src="{{currentmesser.recipient_img}}" alt="user_profile" width="32" height="32"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Sender:</label>  
+  <div class="col-md-4">{{currentmesser.sender}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Sender_img:</label>  
+<div class="col-md-4"><img src="{{currentmesser.sender_img}}" alt="user_profile" width="32" height="32"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Title:</label>  
+<div class="col-md-4">{{currentmesser.title}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Description:</label>  
+<div class="col-md-4">{{currentmesser.description}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Created_at:</label>  
+<div class="col-md-4">{{currentmesser.created_at}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Important:</label>  
+<div class="col-md-4" ng-show="flag"><img src="http://www.thrivingtalents.com/wp-content/uploads/2016/06/flag_icon.png" width="32" height="32"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Input you message:</label>
+  <div class="col-md-4">
+    <table ng-repeat=" m in showreplymess ">
+      <tr>
+        <td>message: {{m}}</td>
+      </tr>
+    </table>
+  <input id="added_by" name="added_by" placeholder="reply here" class="form-control input-md" type="text"  ng-model="replymess">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button class="btn btn-primary" ng-click="reply()">Reply</button>
+    <button class="btn btn-primary" ng-click="delete()">Delete</button>
+    <button class="btn btn-primary" ng-click="important()">Important</button>
+    <a href="#/message" class="btn btn-link">Back</a>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>

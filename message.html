@@ -1,0 +1,29 @@
+<div>
+    <h2>Message</h2>
+    
+ <div class="bd-example">
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>recipient</th>
+        <th>sender</th>
+        <th>title</th>
+        <th>description</th>
+        <th>detail</th>
+        <th>mark</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="x in messlocal">   
+      <tr class="bg-primary" ng-click="catch(x)">
+        <td>{{x.recipient}}</td>
+        <td>{{x.sender}}</td>
+        <td>{{x.title}}</td>
+        <td>{{x.description}}</td>
+        <td><a class="btn btn-link" style="color:white;">show more</a></td>
+        <td ng-show="{{x.important?true:fasle}}"><i class="material-icons">flag</i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <a href="#/home" class="btn btn-link" style="color:black; float:right">Back</a>
+</div>

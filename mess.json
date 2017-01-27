@@ -1,0 +1,52 @@
+[
+        {
+            "recipient":"Steph",
+            "recipient_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "sender":"Smith",
+            "sender_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "title":"Hey, how was the meeting?",
+            "description":"This was so far the best one, we will continuely working on that.",
+            "created_at":"2017-01-01 09:45:00",
+            "important":"0"
+        },
+        {
+            "recipient":"Billy",
+            "recipient_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "sender":"Jane",
+            "sender_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "title":"Have you seen the new Star Wars movie?",
+            "description":"Just watched the new Star Wars: Rouge one, it was awesome!!!",
+            "created_at":"2017-01-02 10:45:00",
+            "important":"1"
+        },
+         {
+            "recipient":"Gary",
+            "recipient_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "sender":"Bengji",
+            "sender_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "title":"Wassup bro, what you doing?",
+            "description":"I have a party at Kearny you wanna come over have some fun?",
+            "created_at":"2017-01-03 09:45:00",
+            "important":"1"
+        },
+         {
+            "recipient":"Leo",
+            "recipient_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "sender":"Daniel",
+            "sender_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "title":"Pick up at upstair only Please come to area E",
+            "description":"This is your uber, due to LAPD restrication you have to come to E then I can pick you up",
+            "created_at":"2017-01-04 09:45:00",
+            "important":"0"
+        },
+         {
+            "recipient":"Berjson",
+            "recipient_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "sender":"Faker",
+            "sender_img":"http://simpleicon.com/wp-content/uploads/user1.png",
+            "title":"LOL, your English suck",
+            "description":"JK JK you're the God, but I can teach you English for free tho, LMAO!!!",
+            "created_at":"2017-01-05 09:00:00",
+            "important":"0"
+        }
+]

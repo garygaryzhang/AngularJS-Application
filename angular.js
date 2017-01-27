@@ -1,11 +1,4 @@
 var app = angular.module('myapp', ['ngRoute']);
-var users = localStorage.getItem("Users")?JSON.parse(localStorage.getItem("Users")):[];
-var currentuser;
-var currentmesser;
-var sign;
-var myData;
-var indx_obj;
-
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -49,6 +42,7 @@ function user(_username, _password, _firstname, _lastname, _email, _phone, _loc)
 }
 
 app.run(function($window, $http) {
+  var myData;
 	if (localStorage.getItem("temp") === null){
 		$http({
 			'method':'GET',
@@ -66,8 +60,13 @@ app.run(function($window, $http) {
 
 app.controller("registerCtrl", function($scope, $location){
   
+  var sign = localStorage.getItem("SS")?JSON.parse(localStorage.getItem("SS")):[];
+  var currentuser = localStorage.getItem("CU")?JSON.parse(localStorage.getItem("CU")):[];
+  var users = localStorage.getItem("Users")?JSON.parse(localStorage.getItem("Users")):[];
+  
   $scope.cancel = function(){
    sign = false;
+   localStorage.setItem("SS", JSON.stringify(sign));
   };
   
   $scope.tryRegister = function(){
@@ -84,8 +83,10 @@ app.controller("registerCtrl", function($scope, $location){
       if (check === true) {
         var newuser = new user($scope.uname, $scope.pword, $scope.fname, $scope.lname, $scope.email, $scope.location, $scope.phone);
         currentuser = newuser;
+        localStorage.setItem("CU", JSON.stringify(currentuser));
         users.push(newuser);
         sign = true;
+        localStorage.setItem("SS", JSON.stringify(sign));
         if (typeof(Storage) !== "undefined") localStorage.setItem("Users", JSON.stringify(users));
 				$location.path('/login');
       }
@@ -95,6 +96,9 @@ app.controller("registerCtrl", function($scope, $location){
 
 app.controller("loginCtrl", function($scope, $location, $http){
   
+  var sign = localStorage.getItem("SS")?JSON.parse(localStorage.getItem("SS")):[];
+  var currentuser = localStorage.getItem("CU")?JSON.parse(localStorage.getItem("CU")):[];
+  var users = localStorage.getItem("Users")?JSON.parse(localStorage.getItem("Users")):[];
   $scope.registeralert = "";
   if(sign === true){
     $scope.registeralert = "Registration successful";
@@ -113,6 +117,7 @@ app.controller("loginCtrl", function($scope, $location, $http){
 				if (user.username === $scope.uname && user.password === $scope.ppassword){
 					validation = true;
 					currentuser = user;
+					localStorage.setItem("CU", JSON.stringify(currentuser));
 				  $location.path('/home');
 				}
 			});
@@ -125,9 +130,11 @@ app.controller("loginCtrl", function($scope, $location, $http){
 
 app.controller("homeCtrl", function($scope,  $location){
   
+  var currentuser = localStorage.getItem("CU")?JSON.parse(localStorage.getItem("CU")):[];
   $scope.currentuser = currentuser;
   $scope.logout = function(){
    sign = false;
+   localStorage.setItem("SS", JSON.stringify(sign));
    $location.path('/login');
   };
 });
@@ -135,6 +142,7 @@ app.controller("homeCtrl", function($scope,  $location){
 
 app.controller("profileCtrl", function($scope, $location){
   
+  var currentuser = localStorage.getItem("CU")?JSON.parse(localStorage.getItem("CU")):[];
   $scope.currentuser = currentuser;
   $scope.readOnly = true;
   $scope.edit = function(){
@@ -182,8 +190,10 @@ app.controller("profileCtrl", function($scope, $location){
 
 app.controller("messageCtrl", function($scope, $http, $location){
   
+  var currentmesser = localStorage.getItem("CM")?JSON.parse(localStorage.getItem("CM")):[];
   var messlocal = localStorage.getItem("temp")?JSON.parse(localStorage.getItem("temp")):[];
   var showreplymess = localStorage.getItem("messtemp")?JSON.parse(localStorage.getItem("messtemp")):[];
+  var indx_obj;
   $scope.currentmesser = currentmesser;
   
   $scope.messlocal = messlocal;
@@ -199,6 +209,7 @@ app.controller("messageCtrl", function($scope, $http, $location){
     indx_obj = x;
     
     currentmesser = indx_obj;
+    localStorage.setItem("CM", JSON.stringify(currentmesser));
     
     $location.path('/detail');
     
@@ -207,6 +218,7 @@ app.controller("messageCtrl", function($scope, $http, $location){
 
 app.controller("detailCtrl", function($scope, $http, $location){
   
+  var currentmesser = localStorage.getItem("CM")?JSON.parse(localStorage.getItem("CM")):[];
   var messlocal = localStorage.getItem("temp")?JSON.parse(localStorage.getItem("temp")):[];
   var showreplymess = localStorage.getItem("messtemp")?JSON.parse(localStorage.getItem("messtemp")):[];
   
@@ -269,6 +281,7 @@ app.controller("detailCtrl", function($scope, $http, $location){
 
     messlocal[i].reply.push($scope.replymess);
     showreplymess =  messlocal[i].reply;
+    console.log(showreplymess);
     $scope.showreplymess = showreplymess;
     localStorage.setItem("messtemp", JSON.stringify(showreplymess));
     $scope.replymess = "";

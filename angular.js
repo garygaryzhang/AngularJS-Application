@@ -167,19 +167,18 @@ app.controller("profileCtrl", function($scope, $location){
         else{
           
           for(var i=0; i<users.length; i++){  
-            console.log(currentuser.username);
-            console.log(users[i].username);
-				    if (currentuser.username === users[i].username){
+           
+		if (currentuser.username === users[i].username){
 				      
-				      users[i].username = $scope.uname;
-				      users[i].password = $scope.pword;
-				      users[i].firstname = $scope.fname;
-				      users[i].lastname = $scope.lname;
-				      users[i].email = $scope.email;
-				      users[i].loc = $scope.location;
-				      users[i].phone = $scope.phone;
+		        users[i].username = $scope.uname;
+			users[i].password = $scope.pword;
+		        users[i].firstname = $scope.fname;
+			users[i].lastname = $scope.lname;
+			users[i].email = $scope.email;
+			users[i].loc = $scope.location;
+			users[i].phone = $scope.phone;
 				      
-				    }
+		}
           }
           
           currentuser.username = $scope.uname;

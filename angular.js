@@ -142,6 +142,7 @@ app.controller("homeCtrl", function($scope,  $location){
 
 app.controller("profileCtrl", function($scope, $location){
   
+  var users = localStorage.getItem("Users")?JSON.parse(localStorage.getItem("Users")):[];
   var currentuser = localStorage.getItem("CU")?JSON.parse(localStorage.getItem("CU")):[];
   $scope.currentuser = currentuser;
   $scope.readOnly = true;
@@ -164,6 +165,23 @@ app.controller("profileCtrl", function($scope, $location){
           
         }
         else{
+          
+          for(var i=0; i<users.length; i++){  
+            console.log(currentuser.username);
+            console.log(users[i].username);
+				    if (currentuser.username === users[i].username){
+				      
+				      users[i].username = $scope.uname;
+				      users[i].password = $scope.pword;
+				      users[i].firstname = $scope.fname;
+				      users[i].lastname = $scope.lname;
+				      users[i].email = $scope.email;
+				      users[i].loc = $scope.location;
+				      users[i].phone = $scope.phone;
+				      
+				    }
+          }
+          
           currentuser.username = $scope.uname;
           currentuser.password = $scope.pword;
           currentuser.firstname = $scope.fname;
@@ -171,6 +189,7 @@ app.controller("profileCtrl", function($scope, $location){
           currentuser.email = $scope.email;
           currentuser.loc = $scope.location;
           currentuser.phone = $scope.phone;
+          localStorage.setItem("CU", JSON.stringify(currentuser));
           
           if (typeof(Storage) !== "undefined") localStorage.setItem("Users", JSON.stringify(users));
           $scope.alert2 = "User Updated!";
